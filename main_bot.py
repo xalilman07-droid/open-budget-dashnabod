@@ -24,11 +24,11 @@ async def send_budget_link():
 
     try:
         # SIZ BERGAN ANIQ VA TO'G'RI UZUN HAVOLA
-        OPEN_BUDGET_TARGET_URL = "https://openbudget.uz"
+        LINK = "https://new.openbudget.uz/uz/initiative-budget/active-initiatives/55/b773e0e7-b83f-40c7-998a-9bba8e2401c2"
 
-        # Telegram havolani qisqartira olmaydigan mutloq toza matn ko'rinishi
+        # Telegram uzun linkni matnda qisqartira olmaydigan maxsus HTML formatlash usuli
         matn = (
-            f"🔗 <code>{OPEN_BUDGET_TARGET_URL}</code>\n\n"
+            f"🔗 <a href='{LINK}'>{LINK}</a>\n\n"
             "🇺🇿 <b>OPEN BUDGET — OVOZ BERISH BOSHLANDI!</b>\n\n"
             "Open budjet DASHNABOD\n\n"
             "Hurmatli fuqaro! Open Budget loyihasiga ovoz berish jarayonlari davom etmoqda. "
@@ -40,7 +40,7 @@ async def send_budget_link():
             "☎️ +998950278779\n\n"
             "Kim qachon bo'lsa ham telefon qilaversin, sizning ovozingiz biz uchun juda muhim! ✨\n\n"
             "👇👇 <b>OVOZ BERISH UCHUN SIZNING TO'LIQ HAVOLANGIZ:</b> 👇👇\n"
-            f"<code>{OPEN_BUDGET_TARGET_URL}</code>"
+            f"🔗 <a href='{LINK}'>{LINK}</a>"
         )
         
         for chat_id in GURUH_CHAT_IDS:
@@ -48,7 +48,7 @@ async def send_budget_link():
                 await bot.send_message(
                     chat_id=chat_id, 
                     text=matn, 
-                    parse_mode="HTML",  # HTML teglari xatosiz ishlashini ta'minlaydi
+                    parse_mode="HTML",  # Majburiy HTML rejim (linklar to'liq chiqishi uchun)
                     disable_web_page_preview=True
                 )
                 logging.info(f"Xabar {chat_id} guruhiga muvaffaqiyatli yuborildi.")
@@ -82,3 +82,7 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+
+
